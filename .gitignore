@@ -1,5 +1,6 @@
 bin
 tmp
+test
 .classpath
 .project
 .DS_Store
