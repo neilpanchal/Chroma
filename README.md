@@ -1,5 +1,7 @@
 *Documentation is work in progress.*
 
+![Chroma](/http://i.imgur.com/KqxeSEC.png)
+
 # Chroma
 Chroma is color conversion library that implements perceptually linear color spaces such as CIELab &amp; CIE-LCH. This library borrows CIE conversions from the very popular Chroma.js JavaScript color conversion library - [Github Link](https://github.com/gka/chroma.js "Github Link")
 
@@ -137,3 +139,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
