@@ -3,9 +3,11 @@
 # Chroma
 Chroma is color conversion library that implements perceptually linear color spaces such as CIELab &amp; CIE-LCH. This library borrows CIE conversions from the very popular Chroma.js JavaScript color conversion library (https://github.com/gka/chroma.js)
 
+Download it here: http://neil.engineer/chroma
+
 ## Motivation
 
-Often in design process, the intent and methodology of color production relies on the predictibility of luminosity. Human vision has evolved to prioritize processing of luminosity information of the projected retinal image. Shape and form are processed before chromacity and hue. Artists & designers benefit from being able to control luminosity in a linear color space. It is pivotal in generating a visual hierachy for a variety of reasons such as distraction, emphasis, phase, depth, abstract artistic intents, etc.
+Often in design process, the intent and methodology of color production relies on the predictibility of luminosity. Human vision has evolved to prioritize processing of luminosity information. Luminosity information is processed before chromacity and hue. Artists & designers benefit from being able to control luminosity in a linear color space. In order to conceive visual distraction, emphasis, phase, depth, importance, or an abstract artistic visual hierarchy; the ability to control luminisity is indispensible.
 
 Color spaces such as **HSL**, **HSV/HSB** and **RGB** are optimized for digital displays and lack luminosity control. For example, varying Hue while keeping Saturation and Lightness constant in HSL colorspace produces perceptually non-uniform colors. Moreover, Lightness is a non-linear function of both - Saturation and Hue. This severely limits the ability to predict the apparent and perceptual luminosity.
 
