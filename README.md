@@ -1,5 +1,5 @@
 
-![Chroma](http://i.imgur.com/KqxeSEC.png)
+![Chroma](http://i.imgur.com/jp31ABn.png)
 
 `*Documentation is work in progress.*`
 
@@ -57,7 +57,8 @@ void draw() {
 *Work in progress*
 
 ```processing
-Chroma(50,50,200,ColorSpace.LCH);		// LCH Color space
+Chroma testRGB = new Chroma(50,50,50,ColorSpace.RGB);
+Chroma testLCH = new Chroma(50,50,200,ColorSpace.LCH);
 ```
 
 ## Tests
