@@ -20,7 +20,7 @@ public class ChromaUtil {
         if (x > 0.206893034) {
             return x * x * x;
         } else {
-            return (x - 4.0F/29.0) / 7.787037;
+            return (x - 4.0F / 29.0) / 7.787037;
         }
     }
 
@@ -41,11 +41,11 @@ public class ChromaUtil {
 
     public static double xyz_lab(double x) {
 
-    	if (x > 0.008856) {
-    		return Math.pow(x, 1.0 / 3.0);
-    	} else {
-    		return 7.787037 * x + 4.0 / 29.0;
-    	}
+        if (x > 0.008856) {
+            return Math.pow(x, 1.0 / 3.0);
+        } else {
+            return 7.787037 * x + 4.0 / 29.0;
+        }
     }
 
 }

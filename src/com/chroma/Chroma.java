@@ -1,5 +1,3 @@
-package com.chroma;
-
 /////////////////////////////////////////////////////////////////////////////////////////
 /*
 Author: Neil Panchal
@@ -21,29 +19,28 @@ References:  Color conversion methods are borrowed from various places as detail
 */
 /////////////////////////////////////////////////////////////////////////////////////////
 
+package com.chroma;
 
 public class Chroma {
 
     private ChromaColor chroma;
 
+    // CONSTRUCTORS
+    /////////////////////////////////////////////////////////////////////////////////////
+
     public Chroma(ColorSpace space, double arg1, double arg2, double arg3, double alpha) {
 
         switch (space) {
-            case RGB:
-                chroma = new ChromaRGB(arg1, arg2, arg3, alpha);
-                break;
-            case HSL:
-                chroma = new ChromaHSL(arg1, arg2, arg3, alpha);
-                break;
-            case HSV:
-                chroma = new ChromaHSV(arg1, arg2, arg3, alpha);
-                break;
-            case LAB:
-                chroma = new ChromaLAB(arg1, arg2, arg3, alpha);
-                break;
-            case LCH:
-                chroma = new ChromaLCH(arg1, arg2, arg3, alpha);
-                break;
+        case RGB:
+            chroma = new ChromaRGB(arg1, arg2, arg3, alpha); break;
+        case HSL:
+            chroma = new ChromaHSL(arg1, arg2, arg3, alpha); break;
+        case HSV:
+            chroma = new ChromaHSV(arg1, arg2, arg3, alpha); break;
+        case LAB:
+            chroma = new ChromaLAB(arg1, arg2, arg3, alpha); break;
+        case LCH:
+            chroma = new ChromaLCH(arg1, arg2, arg3, alpha); break;
         }
 
     }
@@ -57,15 +54,26 @@ public class Chroma {
     }
 
     public Chroma(ColorSpace space, double arg1, double arg2, double arg3) {
-        this(space, arg1, arg2, arg3, 1.0);
+        this(space, arg1, arg2, arg3, 255);
     }
 
+    // GET/SET METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public int get() {
+        return chroma.getColor() ;
+    }
+    public boolean clipped() {
+        return chroma.clipped();
+    }
+    public double getAlpha() {
+        return chroma.getAlpha();
+    }
+    public void setAlpha(double alpha) {
+        chroma.setAlpha(alpha);
+    }
 
-    public int get() { return chroma.getColor() ;}
-    public boolean clipped() { return chroma.clipped();}
-    public double getAlpha() { return chroma.getAlpha();}
-    public void setAlpha(double alpha) { chroma.setAlpha(alpha);}
-
+    // GET-COMPONENT METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
 
     public double[] getRGB() {
         return chroma.getChromaRGB().getRGBComp();
@@ -82,6 +90,9 @@ public class Chroma {
     public double[] getLCH() {
         return chroma.getChromaLCH().getLCHComp();
     }
+
+    // STRING REPRESENTATION METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
     public String hexString() {
         return String.format("%S", "#" + Integer.toHexString(chroma.getColor() & 0x00FFFFFF));
     }

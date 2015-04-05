@@ -7,6 +7,7 @@ public class ChromaLAB extends ChromaColor {
     private double lab_B;
 
     public ChromaLAB(double lab_L_, double lab_A_, double lab_B_, double alpha_) {
+
         this.lab_L = lab_L_;
         this.lab_A = lab_A_;
         this.lab_B = lab_B_;
@@ -14,11 +15,13 @@ public class ChromaLAB extends ChromaColor {
     }
 
     public double[] getLABComp() {
-        return new double[]{lab_L, lab_A, lab_B};
+        return new double[] {lab_L, lab_A, lab_B};
     }
 
-    public ChromaRGB getChromaRGB() {
+    // CONVERSION METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
 
+    public ChromaRGB getChromaRGB() {
 
         double y = (this.lab_L + 16.0) / 116.0;
         double x = y + this.lab_A / 500.0;
@@ -36,17 +39,25 @@ public class ChromaLAB extends ChromaColor {
     }
 
 
-    public ChromaHSL getChromaHSL() { return getChromaRGB().getChromaHSL();}
+    public ChromaHSL getChromaHSL() {
+        return getChromaRGB().getChromaHSL();
+    }
 
-    public ChromaHSV getChromaHSV() { return getChromaRGB().getChromaHSV();}
+    public ChromaHSV getChromaHSV() {
+        return getChromaRGB().getChromaHSV();
+    }
 
-    public ChromaLAB getChromaLAB() { return this;}
+    public ChromaLAB getChromaLAB() {
+        return this;
+    }
     public ChromaLCH getChromaLCH() {
 
-        double lch_C_ = Math.sqrt(Math.pow(this.lab_A,2) + Math.pow(this.lab_B,2));
+        double lch_C_ = Math.sqrt(Math.pow(this.lab_A, 2) + Math.pow(this.lab_B, 2));
         double lch_H_ = Math.atan2(this.lab_B, this.lab_A) / Math.PI * 180;
 
-        return new ChromaLCH(this.lab_L, lch_C_, lch_H_, alpha);}
+        return new ChromaLCH(this.lab_L, lch_C_, lch_H_, alpha);
+    }
+
 }
 
 

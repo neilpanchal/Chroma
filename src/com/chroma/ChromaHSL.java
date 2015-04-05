@@ -14,11 +14,20 @@ public class ChromaHSL extends ChromaColor {
     }
 
     public double[] getHSLComp() {
-        return new double[]{hsl_H, hsl_S, hsl_L};
+        return new double[] {hsl_H, hsl_S, hsl_L};
     }
 
-    public ChromaRGB getChromaRGB()     { return getChromaHSV().getChromaRGB();}
-    public ChromaHSL getChromaHSL()     { return this; }
+
+    // CONVERSION METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    public ChromaRGB getChromaRGB() {
+        return getChromaHSV().getChromaRGB();
+    }
+
+    public ChromaHSL getChromaHSL() {
+        return this;
+    }
 
     public ChromaHSV getChromaHSV() {
 
@@ -27,12 +36,20 @@ public class ChromaHSL extends ChromaColor {
         double hsl_L_ = ChromaUtil.clamp(this.hsl_L, 0, 1);
 
         hsl_S_ *= ((hsl_L_ < 0.5) ? hsl_L_ : 1 - hsl_L_);
+
         double hsv_S_ = (2 * hsl_S_) / (hsl_L_ + hsl_S_);
         double hsv_V_ = hsl_L_ + hsl_S_;
+
         return new ChromaHSV(hsl_H_, hsv_S_, hsv_V_, alpha);
     }
-    public ChromaLAB getChromaLAB() { return new ChromaLAB(1.0, 1.0, 1.0, 1.0);}
-    public ChromaLCH getChromaLCH() { return new ChromaLCH(1.0, 1.0, 1.0, 1.0);}
+
+    public ChromaLAB getChromaLAB() {
+        return getChromaHSV().getChromaLAB();
+    }
+
+    public ChromaLCH getChromaLCH() {
+        return getChromaHSV().getChromaLCH();
+    }
 
 }
 
