@@ -27,8 +27,8 @@ As a demonstration, the swatches shown above exemplify the drawbacks of HSL colo
 import com.chroma.*; // Import Chroma library
 
 int l = 50; // Luminosity, Range: 0-100
-int c = 50; // Chroma, Range: 0-128
-int h = 200; // Hue, Range: 0-360
+int c = 70; // Chroma, Range: 0-128
+int h = 0; // Hue, Range: 0-360
 
 
 Chroma testColor; // Declare a chroma object
@@ -39,7 +39,8 @@ void setup() {
     rectMode(CENTER);
     noStroke();
 
-    testColor = new Chroma(l,c,h,ColorSpace.LCH); // Create a chroma object
+    testColor = new Chroma(ColorSpace.LCH, l, c, h, 255); // Create a chroma object
+    println("Valid RGB Color: " + !testColor.clipped()); // Check if the RGB values are clipped
 }
 
 void draw() {
@@ -47,8 +48,8 @@ void draw() {
     background(255);
 
 
-    fill(testColor.getRGB()); // To fetch RGB color, use the getRGB method.
-    rect(width/2, height/2, 100, 100); // Draw a cyan square
+    fill(testColor.get()); // To fetch RGB color, use the getRGB method.
+    rect(width/2, height/2, 100, 100); // Draw a magenta square
 }
 ```
 
@@ -56,9 +57,83 @@ void draw() {
 
 *Work in progress*
 
+###### Color Spaces
+
+Colors can be created or converted to one of the following color spaces:
+* RGB Color Space (Default)
+* HSL Color Space (Cylindrical transformation of RGB)
+* HSV Color Space (Cylindrical transformation of RGB)
+* LAB Color Space (CIE-Lab)
+* LCH Color Space (Cylindrical transformation of CIE-Lab)
+
+
+###### Constructors
+
 ```processing
-Chroma testRGB = new Chroma(50,50,50,ColorSpace.RGB);
-Chroma testLCH = new Chroma(50,50,200,ColorSpace.LCH);
+// Default constructor with no arguments
+Chroma testColor = new Chroma(); // Defaults to #000000 with alpha = 255
+
+// Constructor with only 3 arguments
+Chroma testColor = new Chroma(255, 0, 0); // Creates #FF0000 with alpha = 255
+
+// Constructor with all arguments
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); // Creates red
+
+```
+
+###### Color instantiation
+
+```processing
+// All colors below produce red (#FF0000)
+
+Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
+Chroma testColorHSL = new Chroma(ColorSpace.HSL, 0, 1, 0.5, 255);
+Chroma testColorHSV = new Chroma(ColorSpace.HSV, 0, 1, 1, 255);
+Chroma testColorLAB = new Chroma(ColorSpace.LAB, 53.24, 80.09, 67.20, 255);
+Chroma testColorLCH = new Chroma(ColorSpace.LCH, 53.24, 104.55, 40.00, 255);
+
+```
+
+###### Get color components
+```processing
+
+// Create a magenta color in LCH color space
+Chroma testColor = new Chroma (ColorSpace.LCH, 50, 70, 240, 255);
+
+// Get RGB color
+// Returns a 32-bit integer containing ARGB values
+testColor.get() // #FFCB3BA1 or [255,203,59,161] 8-bits per channel
+
+testColor.getRGB()
+// Returns RGB component array: { 203.0, 59.0, 161.0 }
+
+testColor.getHSL()
+// Returns HSL component array: { 317.5, 0.5806, 0.5137 }
+
+testColor.getHSV()
+// Returns HSV component array: { 317.5, 0.7094, 0.7961 }
+
+testColor.getLAB()
+// Returns LAB component array: { 50.0,	65.7785, -23.9414 }
+
+testColor.getLCH()
+// Returns LCH component array: { 50.0, 70.0, 340.0 }
+
+```
+
+##### Color conversions
+
+```processing
+
+// RGB to LAB conversion (can be used for any color spaces);
+Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
+println(testColorRGB.getLAB()); // Prints { 53.240794589926296,	80.09245948458054,	67.203196401666}
+
+// LCH to RGB conversion
+Chroma testColorLCH = new Chroma(ColorSpace.LCH, 50, 70, 340, 255); // Creates a magenta color
+println(testColorLCH.getRGB()); // Prints { 203.0, 	59.0, 	161.0 }
+// Be careful when creating LAB/LCH colors. They may lie outside of the RGB color space. You can check if the color is clipped by calling the clipped() method
+println(testColorLCH.clipped()); // If True: One of the R, G or B channels is clipped
 ```
 
 ## Tests
@@ -141,4 +216,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
