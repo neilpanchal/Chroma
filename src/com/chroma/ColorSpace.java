@@ -5,5 +5,5 @@ package com.chroma;
 
 public enum ColorSpace {
 
-RGB,HSL,HSV,HSI,LAB,LCH,HEX,CSS,GL
+    RGB, HSL, HSV, HSI, LAB, LCH, HEX, CSS, GL
 }
