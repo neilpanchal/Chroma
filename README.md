@@ -92,25 +92,28 @@ Chroma testColorLCH = new Chroma(ColorSpace.LCH, 53.24, 104.55, 40.00, 255);
 
 Default constructor with no arguments. Default Alpha is 255 (Opaque).
 ```processing
+Chroma testColor = new Chroma();
 // Create a White(#FFFFFF) color with Alpha = 255
-Chroma testColor = new Chroma(); 
+
 
 ```
 
 ##### Chroma (grayscale)
 
-Constructor with only one argument. 
+Constructor with only one argument.
 ```processing
-// Create a Mid Gray(#808080) color with Alpha = 255
 Chroma testColor = new Chroma(128);
+// Create a Mid Gray(#808080) color with Alpha = 255
+
 ```
 
 ##### Chroma (red, green, blue)
- 
+
 Constructor with three arguments.
 ```processing
+Chroma testColor = new Chroma(255, 0, 0);
 // Create a Red(#FF0000) color with Alpha = 255
-Chroma testColor = new Chroma(255, 0, 0); 
+
 
 ```
 
@@ -118,8 +121,9 @@ Chroma testColor = new Chroma(255, 0, 0);
 
 Constructor with a specified colorspace and three arguments.
 ```processing
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0);
 // Create a Red(#FF0000) color with Alpha = 255
-Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0); 
+
 
 ```
 
@@ -127,8 +131,9 @@ Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0);
 
 Constructor with all arguments.
 ```processing
-// Creates a Red color
-Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); 
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
+// Create a Red(#FF0000) color with Alpha = 255
+
 
 ```
 
@@ -136,16 +141,17 @@ Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
 
 Constructor with a hexadecimal color string format "#FF0000". Input is not case sensitive.
 ```processing
-// Creates a Red color
 Chroma testColor = new Chroma("#FF0000");
+// Create a Red(#FF0000) color with Alpha = 255
+
 
 ```
 
 Constructor with a hexadecimal color string format "#F00".
 
 ```processing
-// Creates a Red color
 Chroma testColor = new Chroma("#F00");
+// Create a Red(#FF0000) color with Alpha = 255
 
 ```
 
@@ -153,25 +159,33 @@ Chroma testColor = new Chroma("#F00");
 
 Constructor with a standard CSS color name. For example, "Red". Input is not case sensitive.
 ```processing
-// Creates a Red color
 Chroma testColor = new Chroma("Red");
+// Create a Red(#FF0000) color with Alpha = 255
+
 
 ```
 
 
-### Get color components
+### Get color information
+
+##### Chroma.get ()
+
 ```processing
+Chroma testColor = new Chroma("Red");
+// Create a Red(#FF0000) color with Alpha = 255
 
-// Create a magenta color in LCH color space
-Chroma testColor = new Chroma (ColorSpace.LCH, 50, 70, 240, 255);
+testColor.get();
+// Returns a 4 byte (32-bit) integer or 0xFFFF0000 for Red (#FF0000)
 
-// Get RGB color
-// Returns a 32-bit integer containing ARGB values
-testColor.get() // #FFCB3BA1 or [255,203,59,161] 8-bits per channel
+```
 
+
+
+##### Chroma.getRGB ()
+```processing
 testColor.getRGB()
 // Returns RGB component array: { 203.0, 59.0, 161.0 }
-
+```
 testColor.getHSL()
 // Returns HSL component array: { 317.5, 0.5806, 0.5137 }
 
@@ -186,27 +200,36 @@ testColor.getLCH()
 
 ```
 
+
+##### Chroma.getLuminance ()
+```processing
+Chroma testColor = new Chroma ("red");
+// Create a Red(#FF0000) color with Alpha = 255
+
+testColor.getLuminance();
+// Returns 0.212600
+
+```
+
+
 ### Color conversions
 
 ```processing
 
 // RGB to LAB conversion (can be used for any color spaces);
 Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
-println(testColorRGB.getLAB()); // Prints { 53.240794589926296,	80.09245948458054,	67.203196401666}
+testColorRGB.getLAB();
+// Returns { 53.240794589926296,	80.09245948458054,	67.203196401666}
 
 // LCH to RGB conversion
 Chroma testColorLCH = new Chroma(ColorSpace.LCH, 50, 70, 340, 255); // Creates a magenta color
-println(testColorLCH.getRGB()); // Prints { 203.0, 	59.0, 	161.0 }
+testColorLCH.getRGB();
+// Returns { 203.0, 	59.0, 	161.0 }
+
+
+testColorLCH.clipped();
 // Be careful when creating LAB/LCH colors. They may lie outside of the RGB color space. You can check if the color is clipped by calling the clipped() method
-println(testColorLCH.clipped()); // If True: One of the R, G or B channels is clipped
-```
-
-### Color properties
-```processing
-// Create a red color in RGB color space
-Chroma testColor = new Chroma ("red");
-testColor.getLuminance(); // Returns 0.212600
-
+// If True: One of the R, G or B channels is clipped
 ```
 
 
