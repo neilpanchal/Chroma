@@ -72,17 +72,69 @@ Colors can be created or converted to one of the following color spaces:
 
 ### Constructors
 
+#### Chroma()
+
+Default constructor with no arguments. Default Alpha is 255 (Opaque).
 ```processing
-// Default constructor with no arguments
 Chroma testColor = new Chroma(); // Defaults to #000000 with alpha = 255
 
-// Constructor with only 3 arguments
+```
+
+#### Chroma(grayscale)
+
+Constructor with only one argument. 
+```processing
+Chroma testColor = new Chroma(120);
+```
+
+#### Chroma(red, green, blue)
+
+Constructor with three arguments.
+```processing
 Chroma testColor = new Chroma(255, 0, 0); // Creates #FF0000 with alpha = 255
 
-// Constructor with all arguments
+```
+
+#### Chroma(colorspace, input1, input2, input3)
+
+Constructor with a specified colorspace and three arguments.
+```processing
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0); // Creates #FF0000 with alpha = 255
+
+```
+
+#### Chroma(colorspace, input1, input2, input3, input4)
+
+Constructor with all arguments.
+```processing
 Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); // Creates red
 
 ```
+
+#### Chroma(hex)
+
+Constructor with a hexadecimal color string format "#FF0000". Input is not case sensitive.
+```processing
+Chroma testColor = new Chroma("#FF0000"); // Creates red
+
+```
+
+Constructor with a hexadecimal color string format "#F00".
+
+```processing
+Chroma testColor = new Chroma("#F00"); // Creates red
+
+```
+
+#### Chroma(colorname)
+
+Constructor with a standard CSS color name. For example, "Red". Input is not case sensitive.
+```processing
+Chroma testColor = new Chroma("Red"); // Creates red
+
+```
+
+
 
 ### Color instantiation
 
