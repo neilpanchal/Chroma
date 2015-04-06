@@ -4,7 +4,7 @@
 `*Documentation is work in progress.*`
 
 # Chroma
-Chroma is color conversion library that implements perceptually linear color spaces such as CIELab &amp; CIE-LCH. This library borrows CIE conversions from the very popular Chroma.js JavaScript color conversion library - [Chroma.js](https://github.com/gka/chroma.js "Github Link")
+Chroma is color conversion library that implements perceptually linear color spaces such as CIELab &amp; CIE-LCH. This library borrows CIE conversions from the very popular [Chroma.js](https://github.com/gka/chroma.js "Github Link") JavaScript color conversion library.
 
 Download it here: [Chroma](http://neil.engineer/index.php?/pages/chroma/ "Chroma")
 
