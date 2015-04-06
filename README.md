@@ -72,68 +72,75 @@ Colors can be created or converted to one of the following color spaces:
 
 ### Constructors
 
-#### Chroma()
+##### Chroma ()
 
 Default constructor with no arguments. Default Alpha is 255 (Opaque).
 ```processing
-Chroma testColor = new Chroma(); // Defaults to #000000 with alpha = 255
+// Create a White(#FFFFFF) color with Alpha = 255
+Chroma testColor = new Chroma(); 
 
 ```
 
-#### Chroma(grayscale)
+##### Chroma (grayscale)
 
 Constructor with only one argument. 
 ```processing
-Chroma testColor = new Chroma(120);
+// Create a Mid Gray(#808080) color with Alpha = 255
+Chroma testColor = new Chroma(128);
 ```
 
-#### Chroma(red, green, blue)
-
+##### Chroma (red, green, blue)
+ 
 Constructor with three arguments.
 ```processing
-Chroma testColor = new Chroma(255, 0, 0); // Creates #FF0000 with alpha = 255
+// Create a Red(#FF0000) color with Alpha = 255
+Chroma testColor = new Chroma(255, 0, 0); 
 
 ```
 
-#### Chroma(colorspace, input1, input2, input3)
+##### Chroma (colorspace, input1, input2, input3)
 
 Constructor with a specified colorspace and three arguments.
 ```processing
-Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0); // Creates #FF0000 with alpha = 255
+// Create a Red(#FF0000) color with Alpha = 255
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0); 
 
 ```
 
-#### Chroma(colorspace, input1, input2, input3, input4)
+##### Chroma (colorspace, input1, input2, input3, input4)
 
 Constructor with all arguments.
 ```processing
-Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); // Creates red
+// Creates a Red color
+Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); 
 
 ```
 
-#### Chroma(hex)
+##### Chroma (hex)
 
 Constructor with a hexadecimal color string format "#FF0000". Input is not case sensitive.
 ```processing
-Chroma testColor = new Chroma("#FF0000"); // Creates red
+// Creates a Red color
+Chroma testColor = new Chroma("#FF0000");
 
 ```
 
 Constructor with a hexadecimal color string format "#F00".
 
 ```processing
-Chroma testColor = new Chroma("#F00"); // Creates red
+// Creates a Red color
+Chroma testColor = new Chroma("#F00");
 
 ```
 
-#### Chroma(colorname)
+##### Chroma (colorname)
 
 Constructor with a standard CSS color name. For example, "Red". Input is not case sensitive.
 ```processing
-Chroma testColor = new Chroma("Red"); // Creates red
+// Creates a Red color
+Chroma testColor = new Chroma("Red");
 
 ```
-
 
 
 ### Color instantiation

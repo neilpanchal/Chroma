@@ -46,7 +46,10 @@ public class Chroma {
         }
 
     }
-
+    
+    public Chroma() {
+    	this(ColorSpace.RGB, 255, 255, 255, 255);
+    }
     // Chroma(255, 0, 0)
     public Chroma(int red, int green, int blue) {
         this(ColorSpace.RGB, red, green, blue, 255);
