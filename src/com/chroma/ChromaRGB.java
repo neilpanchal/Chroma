@@ -20,9 +20,11 @@ public class ChromaRGB extends ChromaColor {
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
-    public ChromaRGB getChromaRGB() { return this;}
+    @Override
+	public ChromaRGB getChromaRGB() { return this;}
 
-    public ChromaHSL getChromaHSL() {
+    @Override
+	public ChromaHSL getChromaHSL() {
 
         ChromaHSV hsv = getChromaHSV();
         double[] hsv_comp = hsv.getHSVComp();
@@ -44,7 +46,8 @@ public class ChromaRGB extends ChromaColor {
         return new ChromaHSL(hsl_H_, hsl_S_, hsl_L_, getAlpha());
     }
 
-    public ChromaHSV getChromaHSV() {
+    @Override
+	public ChromaHSV getChromaHSV() {
 
         double rgb_R_ = rgb_R / 255.0;
         double rgb_G_ = rgb_G / 255.0;
@@ -89,7 +92,8 @@ public class ChromaRGB extends ChromaColor {
         return new ChromaHSV(hsv_H_, hsv_S_, hsv_V_, alpha);
     }
 
-    public ChromaLAB getChromaLAB() {
+    @Override
+	public ChromaLAB getChromaLAB() {
 
         double rgb_R_ = ChromaUtil.rgb_xyz(this.rgb_R);
         double rgb_G_ = ChromaUtil.rgb_xyz(this.rgb_G);
@@ -102,6 +106,7 @@ public class ChromaRGB extends ChromaColor {
         return new ChromaLAB(116.0 * y - 16.0, 500.0 * (x - y), 200.0 * (y - z), alpha);
     }
 
-    public ChromaLCH getChromaLCH() { return getChromaLAB().getChromaLCH();}
+    @Override
+	public ChromaLCH getChromaLCH() { return getChromaLAB().getChromaLCH();}
 
 }

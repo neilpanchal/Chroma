@@ -21,7 +21,8 @@ public class ChromaLAB extends ChromaColor {
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
-    public ChromaRGB getChromaRGB() {
+    @Override
+	public ChromaRGB getChromaRGB() {
 
         double y = (this.lab_L + 16.0) / 116.0;
         double x = y + this.lab_A / 500.0;
@@ -39,18 +40,22 @@ public class ChromaLAB extends ChromaColor {
     }
 
 
-    public ChromaHSL getChromaHSL() {
+    @Override
+	public ChromaHSL getChromaHSL() {
         return getChromaRGB().getChromaHSL();
     }
 
-    public ChromaHSV getChromaHSV() {
+    @Override
+	public ChromaHSV getChromaHSV() {
         return getChromaRGB().getChromaHSV();
     }
 
-    public ChromaLAB getChromaLAB() {
+    @Override
+	public ChromaLAB getChromaLAB() {
         return this;
     }
-    public ChromaLCH getChromaLCH() {
+    @Override
+	public ChromaLCH getChromaLCH() {
 
         double lch_C_ = Math.sqrt(Math.pow(this.lab_A, 2) + Math.pow(this.lab_B, 2));
         double lch_H_ = Math.atan2(this.lab_B, this.lab_A) / Math.PI * 180;

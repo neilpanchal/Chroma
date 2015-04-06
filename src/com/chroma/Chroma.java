@@ -21,8 +21,6 @@ References:  Color conversion methods are borrowed from various places as detail
 
 package com.chroma;
 
-import java.util.Arrays;
-
 public class Chroma {
 
     private ChromaColor chroma;
@@ -145,6 +143,9 @@ public class Chroma {
     public void setAlpha(double alpha) {
         chroma.setAlpha(alpha);
     }
+    public double getLuminance(){
+    	return chroma.getLuminance();
+    }
 
     // GET-COMPONENT METHODS
     /////////////////////////////////////////////////////////////////////////////////////
@@ -171,7 +172,8 @@ public class Chroma {
         return String.format("%S", "#" + Integer.toHexString(chroma.getColor()).substring(2, 8));
     }
 
-    public String toString() {
+    @Override
+	public String toString() {
         return hexString();
     }
 }

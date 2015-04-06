@@ -22,7 +22,8 @@ public class ChromaHSV extends ChromaColor {
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
-    public ChromaRGB getChromaRGB() {
+    @Override
+	public ChromaRGB getChromaRGB() {
 
         double rgb_R_ = 0;
         double rgb_G_ = 0;
@@ -65,16 +66,20 @@ public class ChromaHSV extends ChromaColor {
         return new ChromaRGB(rgb_R_, rgb_G_, rgb_B_, alpha);
     }
 
-    public ChromaHSL getChromaHSL() {
+    @Override
+	public ChromaHSL getChromaHSL() {
         return getChromaRGB().getChromaHSL();
     }
-    public ChromaHSV getChromaHSV() {
+    @Override
+	public ChromaHSV getChromaHSV() {
         return this;
     }
-    public ChromaLAB getChromaLAB() {
+    @Override
+	public ChromaLAB getChromaLAB() {
         return getChromaRGB().getChromaLAB();
     }
-    public ChromaLCH getChromaLCH() {
+    @Override
+	public ChromaLCH getChromaLCH() {
         return getChromaRGB().getChromaLCH();
     }
 }

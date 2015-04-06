@@ -21,15 +21,18 @@ public class ChromaHSL extends ChromaColor {
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
-    public ChromaRGB getChromaRGB() {
+    @Override
+	public ChromaRGB getChromaRGB() {
         return getChromaHSV().getChromaRGB();
     }
 
-    public ChromaHSL getChromaHSL() {
+    @Override
+	public ChromaHSL getChromaHSL() {
         return this;
     }
 
-    public ChromaHSV getChromaHSV() {
+    @Override
+	public ChromaHSV getChromaHSV() {
 
         double hsl_H_ = ChromaUtil.clamp(this.hsl_H, 0, 360);
         double hsl_S_ = ChromaUtil.clamp(this.hsl_S, 0, 1);
@@ -43,11 +46,13 @@ public class ChromaHSL extends ChromaColor {
         return new ChromaHSV(hsl_H_, hsv_S_, hsv_V_, alpha);
     }
 
-    public ChromaLAB getChromaLAB() {
+    @Override
+	public ChromaLAB getChromaLAB() {
         return getChromaHSV().getChromaLAB();
     }
 
-    public ChromaLCH getChromaLCH() {
+    @Override
+	public ChromaLCH getChromaLCH() {
         return getChromaHSV().getChromaLCH();
     }
 

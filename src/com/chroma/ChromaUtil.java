@@ -51,6 +51,14 @@ public class ChromaUtil {
 			return 7.787037 * x + 4.0 / 29.0;
 		}
 	}
+	public static double luminance_x(double x) {
+		x /= 255.0;
+        if (x <= 0.03928) {
+            return x / 12.92;
+        } else {
+            return Math.pow((x + 0.055) / 1.055, 2.4);
+        }
+	}
 
 	public static boolean validateHex(final String hex) {
 		Pattern pattern;

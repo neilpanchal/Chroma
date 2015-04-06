@@ -39,7 +39,16 @@ public abstract class ChromaColor {
         return temp[0] < 0 || temp[1] < 0 || temp[2] < 0 ||
                temp[0] > 255 || temp[1] > 255 || temp[2] > 255;
     }
-
+    
+    public double getLuminance() {
+    	double temp[] = getChromaRGB().getRGBComp();
+    	
+    	return 0.2126 	* ChromaUtil.luminance_x(temp[0]) 
+    					+ 0.7152 * ChromaUtil.luminance_x(temp[1]) 
+    					+ 0.0722 * ChromaUtil.luminance_x(temp[2]);
+    }
+    
+  
     // CHROMA CONVERSIONS (Must be implemented in each Chroma class)
     /////////////////////////////////////////////////////////////////////////////////////
 

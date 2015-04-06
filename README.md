@@ -126,7 +126,7 @@ testColor.getLCH()
 
 ```
 
-## Color conversions
+### Color conversions
 
 ```processing
 
@@ -140,6 +140,15 @@ println(testColorLCH.getRGB()); // Prints { 203.0, 	59.0, 	161.0 }
 // Be careful when creating LAB/LCH colors. They may lie outside of the RGB color space. You can check if the color is clipped by calling the clipped() method
 println(testColorLCH.clipped()); // If True: One of the R, G or B channels is clipped
 ```
+
+### Color properties
+```processing
+// Create a red color in RGB color space
+Chroma testColor = new Chroma ("red");
+testColor.getLuminance(); // Returns 0.212600
+
+```
+
 
 ## Tests
 
