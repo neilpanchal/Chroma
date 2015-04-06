@@ -65,7 +65,7 @@ public class ChromaUtil {
 
 	public static String[] colorBrewer(String scale) {
 
-		HashMap<String, String[]> hash_ = new HashMap<>();
+		HashMap<String, String[]> hash_ = new HashMap<String, String[]>();
 
         hash_.put("OrRd",
             new String[]{"#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"});
@@ -143,7 +143,7 @@ public class ChromaUtil {
 
 	public static String colorName(String name) {
 
-		HashMap<String, String> hash_ = new HashMap<>();
+		HashMap<String, String> hash_ = new HashMap<String, String>();
 
 		hash_.put("indigo",               "#4b0082");
         hash_.put("gold",                 "#ffd700");
