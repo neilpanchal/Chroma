@@ -58,7 +58,7 @@ void draw() {
 
 ## API Reference
 
-*Work in progress*
+`*Work in progress*`
 
 ### Color Spaces
 
@@ -70,7 +70,7 @@ Colors can be created or converted to one of the following color spaces:
 * LCH Color Space (Cylindrical transformation of CIE-Lab)
 
 
-### Color instantiation
+### Color Initialization
 
 Quick refernce for creating Chroma colors.
 ```processing
@@ -166,7 +166,7 @@ Chroma testColor = new Chroma("Red");
 ```
 
 
-### Get color information
+### Color Information
 
 ##### Chroma.get ()
 
@@ -179,6 +179,13 @@ testColor.get();
 
 ```
 
+##### Chroma.getAlpha()
+
+```processing
+testColor.getAlpha();
+// Returns Alpha Channel = 255 (Opaque)
+
+```
 
 
 ##### Chroma.getXXX ()
@@ -214,7 +221,7 @@ testColor.getLuminance();
 ```
 
 
-### Color conversions
+### Color Conversions
 
 ```processing
 
@@ -233,6 +240,10 @@ testColorLCH.clipped();
 // Be careful when creating LAB/LCH colors. They may lie outside of the RGB color space. You can check if the color is clipped by calling the clipped() method
 // If True: One of the R, G or B channels is clipped
 ```
+
+### Color Processing
+
+`*Work in Progress*`
 
 
 ## Tests
