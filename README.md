@@ -57,7 +57,7 @@ void draw() {
 
 *Work in progress*
 
-###### Color Spaces
+### Color Spaces
 
 Colors can be created or converted to one of the following color spaces:
 * RGB Color Space (Default)
@@ -67,7 +67,7 @@ Colors can be created or converted to one of the following color spaces:
 * LCH Color Space (Cylindrical transformation of CIE-Lab)
 
 
-###### Constructors
+### Constructors
 
 ```processing
 // Default constructor with no arguments
@@ -81,11 +81,13 @@ Chroma testColor = new Chroma(ColorSpace.RGB, 255, 0, 0, 255); // Creates red
 
 ```
 
-###### Color instantiation
+### Color instantiation
 
 ```processing
 // All colors below produce red (#FF0000)
 
+Chroma testColorString = new Chroma("Red");
+Chroma testColorHex = new Chroma("#FF0000");
 Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
 Chroma testColorHSL = new Chroma(ColorSpace.HSL, 0, 1, 0.5, 255);
 Chroma testColorHSV = new Chroma(ColorSpace.HSV, 0, 1, 1, 255);
@@ -94,7 +96,7 @@ Chroma testColorLCH = new Chroma(ColorSpace.LCH, 53.24, 104.55, 40.00, 255);
 
 ```
 
-###### Get color components
+### Get color components
 ```processing
 
 // Create a magenta color in LCH color space
@@ -121,7 +123,7 @@ testColor.getLCH()
 
 ```
 
-##### Color conversions
+## Color conversions
 
 ```processing
 
@@ -144,7 +146,7 @@ Alternatively, you can find the example source code under `Processing/libraries/
 
 ## Installation
 
-###### How to install library Chroma
+### How to install library Chroma
 
 
 Install with the "Add Library..." tool
@@ -155,7 +157,7 @@ libraries have been converted to show up in this menu. If a library isn't there,
 it will need to be installed manually by following the instructions below.
 
 
-###### Manual Install
+### Manual Install
 
 Contributed libraries may be downloaded separately and manually placed within
 the "libraries" folder of your Processing sketchbook. To find (and change) the
