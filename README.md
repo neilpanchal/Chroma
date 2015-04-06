@@ -70,6 +70,22 @@ Colors can be created or converted to one of the following color spaces:
 * LCH Color Space (Cylindrical transformation of CIE-Lab)
 
 
+### Color instantiation
+
+Quick refernce for creating Chroma colors.
+```processing
+// All colors below produce a Red (#FF0000)
+
+Chroma testColorString = new Chroma("Red");
+Chroma testColorHex = new Chroma("#FF0000");
+Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
+Chroma testColorHSL = new Chroma(ColorSpace.HSL, 0, 1, 0.5, 255);
+Chroma testColorHSV = new Chroma(ColorSpace.HSV, 0, 1, 1, 255);
+Chroma testColorLAB = new Chroma(ColorSpace.LAB, 53.24, 80.09, 67.20, 255);
+Chroma testColorLCH = new Chroma(ColorSpace.LCH, 53.24, 104.55, 40.00, 255);
+
+```
+
 ### Constructors
 
 ##### Chroma ()
@@ -142,21 +158,6 @@ Chroma testColor = new Chroma("Red");
 
 ```
 
-
-### Color instantiation
-
-```processing
-// All colors below produce red (#FF0000)
-
-Chroma testColorString = new Chroma("Red");
-Chroma testColorHex = new Chroma("#FF0000");
-Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
-Chroma testColorHSL = new Chroma(ColorSpace.HSL, 0, 1, 0.5, 255);
-Chroma testColorHSV = new Chroma(ColorSpace.HSV, 0, 1, 1, 255);
-Chroma testColorLAB = new Chroma(ColorSpace.LAB, 53.24, 80.09, 67.20, 255);
-Chroma testColorLCH = new Chroma(ColorSpace.LCH, 53.24, 104.55, 40.00, 255);
-
-```
 
 ### Get color components
 ```processing
