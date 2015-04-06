@@ -181,11 +181,13 @@ testColor.get();
 
 
 
-##### Chroma.getRGB ()
+##### Chroma.getXXX ()
+
 ```processing
+
 testColor.getRGB()
 // Returns RGB component array: { 203.0, 59.0, 161.0 }
-```
+
 testColor.getHSL()
 // Returns HSL component array: { 317.5, 0.5806, 0.5137 }
 
