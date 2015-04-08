@@ -17,6 +17,16 @@ public class ChromaHSL extends ChromaColor {
         return new double[] {hsl_H, hsl_S, hsl_L};
     }
 
+    // GET & SET METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public double getHSL_H() { return this.hsl_H;}
+    public double getHSL_S() { return this.hsl_S;}
+    public double getHSL_L() { return this.hsl_L;}
+
+    public void setHSL_H(double hsl_H_) { this.hsl_H = hsl_H_;}
+    public void setHSL_S(double hsl_S_) { this.hsl_S = hsl_S_;}
+    public void setHSL_L(double hsl_L_) { this.hsl_L = hsl_L_;}
+
 
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////

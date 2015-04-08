@@ -18,6 +18,16 @@ public class ChromaLCH extends ChromaColor {
         return new double[] {lch_L, lch_C, lch_H};
     }
 
+    // GET & SET METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public double getLCH_L() { return this.lch_L;}
+    public double getLCH_C() { return this.lch_C;}
+    public double getLCH_H() { return this.lch_H;}
+
+    public void setLCH_L(double lch_L_) { this.lch_L = lch_L_;}
+    public void setLCH_C(double lch_C_) { this.lch_C = lch_C_;}
+    public void setLCH_H(double lch_H_) { this.lch_H = lch_H_;}
+
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 

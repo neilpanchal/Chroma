@@ -16,8 +16,18 @@ public class ChromaHSV extends ChromaColor {
 
 
     public double[] getHSVComp() {
-        return new double[] {hsv_H, hsv_S, hsv_V};
+        return new double[] {this.hsv_H, this.hsv_S, this.hsv_V};
     }
+
+    // GET & SET METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public double getHSV_H() { return this.hsv_H;}
+    public double getHSV_S() { return this.hsv_S;}
+    public double getHSV_V() { return this.hsv_V;}
+
+    public void setHSV_H(double hsv_H_) { this.hsv_H = hsv_H_;}
+    public void setHSV_S(double hsv_S_) { this.hsv_S = hsv_S_;}
+    public void setHSV_V(double hsv_V_) { this.hsv_V = hsv_V_;}
 
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +40,7 @@ public class ChromaHSV extends ChromaColor {
         double rgb_B_ = 0;
 
         // Convert value from 0-1 to 0-255
-        double hsv_V_ = hsv_V * 255;
+        double hsv_V_ = this.hsv_V * 255;
         double hsv_S_ = this.hsv_S;
         double hsv_H_ = this.hsv_H;
 
@@ -63,7 +73,7 @@ public class ChromaHSV extends ChromaColor {
             }
         }
 
-        return new ChromaRGB(rgb_R_, rgb_G_, rgb_B_, alpha);
+        return new ChromaRGB(rgb_R_, rgb_G_, rgb_B_, this.alpha);
     }
 
     @Override

@@ -46,7 +46,7 @@ public class Chroma {
         }
 
     }
-    
+
     public Chroma() {
     	this(ColorSpace.RGB, 255, 255, 255, 255);
     }
@@ -69,7 +69,7 @@ public class Chroma {
     public Chroma(int gray) {
     	this(ColorSpace.RGB, gray, gray, gray, 255);
     }
-    
+
     public Chroma(String stringInput){
 
     	int r_;
@@ -108,22 +108,22 @@ public class Chroma {
     		}
 
     	} else {
-    		
+
     		String match = ChromaUtil.colorName(stringInput);
-    		
+
     		if (match != null) {
-    			
+
 				int rgbInt = Integer.parseInt(match.substring(1, 7),16);
 
 		        r_ = rgbInt >> 16;
 		        g_ = rgbInt >> 8 & 0xFF;
 		        b_ = rgbInt & 0xFF;
 
-		        
+
                 this.chroma = new ChromaRGB(r_, g_, b_, 255);
-                
+
     		} else {
-    			
+
         		throw new IllegalArgumentException("Invalid Color String. Please refer to the API valid input formats.");
 
     		}
@@ -151,6 +151,125 @@ public class Chroma {
     }
 
     // GET-COMPONENT METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public double getRGB_R() {
+        return chroma.getRGB_R();
+    }
+    public double getRGB_G() {
+        return chroma.getRGB_G();
+    }
+    public double getRGB_B() {
+        return chroma.getRGB_B();
+    }
+
+    public double getHSL_H() {
+        return chroma.getHSL_H();
+    }
+    public double getHSL_S() {
+        return chroma.getHSL_S();
+    }
+    public double getHSL_L() {
+        return chroma.getHSL_L();
+    }
+
+    public double getHSV_H() {
+        return chroma.getHSV_H();
+    }
+    public double getHSV_S() {
+        return chroma.getHSV_S();
+    }
+    public double getHSV_V() {
+        return chroma.getHSV_V();
+    }
+
+    public double getLAB_L() {
+        return chroma.getLAB_L();
+    }
+    public double getLAB_A() {
+        return chroma.getLAB_A();
+    }
+    public double getLAB_B() {
+        return chroma.getLAB_B();
+    }
+
+    public double getLCH_L() {
+        return chroma.getLCH_L();
+    }
+    public double getLCH_C() {
+        return chroma.getLCH_C();
+    }
+    public double getLCH_H() {
+        return chroma.getLCH_H();
+    }
+
+
+    public void setRGB_R(double rgb_R_) {
+        this.chroma = chroma.getChromaRGB();
+        chroma.setRGB_R(rgb_R_);
+    }
+    public void setRGB_G(double rgb_G_) {
+        this.chroma = chroma.getChromaRGB();
+        chroma.setRGB_G(rgb_G_);
+    }
+
+    public void setRGB_B(double rgb_B_) {
+        this.chroma = chroma.getChromaRGB();
+        chroma.setRGB_B(rgb_B_);
+    }
+
+    public void setHSL_H(double hsl_H_) {
+        this.chroma = chroma.getChromaHSL();
+        chroma.setHSL_H(hsl_H_);
+    }
+    public void setHSL_S(double hsl_S_) {
+        this.chroma = chroma.getChromaHSL();
+        chroma.setHSL_S(hsl_S_);
+    }
+    public void setHSL_L(double hsl_L_) {
+        this.chroma = chroma.getChromaHSL();
+        chroma.setHSL_L(hsl_L_);
+    }
+
+    public void setHSV_H(double hsv_H_) {
+        this.chroma = chroma.getChromaHSV();
+        chroma.setHSV_H(hsv_H_);
+    }
+    public void setHSV_S(double hsv_S_) {
+        this.chroma = chroma.getChromaHSV();
+        chroma.setHSV_S(hsv_S_);
+    }
+    public void setHSV_V(double hsv_V_) {
+        this.chroma = chroma.getChromaHSV();
+        chroma.setHSV_V(hsv_V_);
+    }
+
+    public void setLAB_L(double lab_L_) {
+        this.chroma = chroma.getChromaLAB();
+        chroma.setLAB_L(lab_L_);
+    }
+    public void setLAB_A(double lab_A_) {
+        this.chroma = chroma.getChromaLAB();
+        chroma.setLAB_A(lab_A_);
+    }
+    public void setLAB_B(double lab_B_) {
+        this.chroma = chroma.getChromaLAB();
+        chroma.setLAB_B(lab_B_);
+    }
+
+    public void setLCH_L(double hsv_L_) {
+        this.chroma = chroma.getChromaLCH();
+        chroma.setLCH_L(hsv_L_);
+    }
+    public void setLCH_C(double hsv_C_) {
+        this.chroma = chroma.getChromaLCH();
+        chroma.setLCH_C(hsv_C_);
+    }
+    public void setLCH_H(double hsv_H_) {
+        this.chroma = chroma.getChromaLCH();
+        chroma.setLCH_H(hsv_H_);
+    }
+
+    // GET-COMPONENT ARRAY METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
     public double[] getRGB() {

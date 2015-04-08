@@ -17,6 +17,17 @@ public class ChromaRGB extends ChromaColor {
         return new double[] {this.rgb_R, this.rgb_G, this.rgb_B};
     }
 
+    // GET & SET METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
+    public double getRGB_R() { return this.rgb_R;}
+    public double getRGB_G() { return this.rgb_G;}
+    public double getRGB_B() { return this.rgb_B;}
+
+    public void setRGB_R(double rgb_R_) { this.rgb_R = rgb_R_;}
+    public void setRGB_G(double rgb_G_) { this.rgb_G = rgb_G_;}
+    public void setRGB_B(double rgb_B_) { this.rgb_B = rgb_B_;}
+
+
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
 
