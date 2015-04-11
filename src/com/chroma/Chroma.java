@@ -248,7 +248,8 @@ public class Chroma {
 
 
 
-
+    // SET-COMPONENT METHODS
+    /////////////////////////////////////////////////////////////////////////////////////
 
     public void set(ColorSpace space, double input1, double input2, double input3) {
         switch (space) {
@@ -261,11 +262,31 @@ public class Chroma {
         }
     }
 
+    public void set(ColorSpace space, Channel channel, double input) {
+        switch (space) {
+        case RGB: setRGB(channel, input); break;
+        case HSL: setHSL(channel, input); break;
+        case HSV: setHSV(channel, input); break;
+        case LAB: setLAB(channel, input); break;
+        case LCH: setLCH(channel, input); break;
+        default: throw new IllegalArgumentException("Invalid color space.");
+        }
+    }
+
     public void setRGB(double input1, double input2, double input3) {
         this.chroma = chroma.getChromaRGB();
         chroma.setRGB_R(input1);
         chroma.setRGB_G(input2);
         chroma.setRGB_B(input3);
+    }
+    public void setRGB(Channel channel, double input) {
+        this.chroma = chroma.getChromaRGB();
+        switch (channel) {
+        case R: chroma.setRGB_R(input); break;
+        case G: chroma.setRGB_G(input); break;
+        case B: chroma.setRGB_B(input); break;
+        default: throw new IllegalArgumentException("Invalid channel for RGB color space");
+        }
     }
 
     public void setHSL(double input1, double input2, double input3) {
@@ -273,31 +294,67 @@ public class Chroma {
         chroma.setHSL_H(input1);
         chroma.setHSL_S(input2);
         chroma.setHSL_L(input3);
+
     }
+
+    public void setHSL(Channel channel, double input) {
+        this.chroma = chroma.getChromaHSL();
+        switch (channel) {
+        case H: chroma.setHSL_H(input); break;
+        case S: chroma.setHSL_S(input); break;
+        case L: chroma.setHSL_L(input); break;
+        default: throw new IllegalArgumentException("Invalid channel for HSL color space");
+        }
+    }
+
     public void setHSV(double input1, double input2, double input3) {
         this.chroma = chroma.getChromaHSV();
         chroma.setHSV_H(input1);
         chroma.setHSV_S(input2);
         chroma.setHSV_V(input3);
     }
+
+    public void setHSV(Channel channel, double input) {
+        this.chroma = chroma.getChromaHSV();
+        switch (channel) {
+        case H: chroma.setHSV_H(input); break;
+        case S: chroma.setHSV_S(input); break;
+        case V: chroma.setHSV_V(input); break;
+        default: throw new IllegalArgumentException("Invalid channel for HSV color space");
+        }
+    }
+
     public void setLAB(double input1, double input2, double input3) {
         this.chroma = chroma.getChromaLAB();
         chroma.setLAB_L(input1);
         chroma.setLAB_A(input2);
         chroma.setLAB_B(input3);
     }
+    public void setLAB(Channel channel, double input) {
+        this.chroma = chroma.getChromaLAB();
+        switch (channel) {
+        case L: chroma.setLAB_L(input); break;
+        case A: chroma.setLAB_A(input); break;
+        case B: chroma.setLAB_B(input); break;
+        default: throw new IllegalArgumentException("Invalid channel for LAB color space");
+        }
+    }
+
     public void setLCH(double input1, double input2, double input3) {
         this.chroma = chroma.getChromaLCH();
         chroma.setLCH_L(input1);
         chroma.setLCH_C(input2);
         chroma.setLCH_H(input3);
     }
-
-
-
-    // GET-COMPONENT ARRAY METHODS
-    /////////////////////////////////////////////////////////////////////////////////////
-
+    public void setLCH(Channel channel, double input) {
+        this.chroma = chroma.getChromaLCH();
+        switch (channel) {
+        case L: chroma.setLCH_L(input); break;
+        case C: chroma.setLCH_C(input); break;
+        case H: chroma.setLCH_H(input); break;
+        default: throw new IllegalArgumentException("Invalid channel for LCH color space");
+        }
+    }
 
 
     // STRING REPRESENTATION METHODS
