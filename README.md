@@ -179,16 +179,28 @@ testColor.get();
 
 ```
 
-##### Chroma.getAlpha()
+##### Chroma.get(ColorSpace)
 
 ```processing
-testColor.getAlpha();
-// Returns Alpha Channel = 255 (Opaque)
+
+testColor.get(ColorSpace.RGB)
+// Returns RGB component array: { 203.0, 59.0, 161.0 }
+
+testColor.get(ColorSpace.HSL)
+// Returns HSL component array: { 317.5, 0.5806, 0.5137 }
+
+testColor.get(ColorSpace.HSV)
+// Returns HSV component array: { 317.5, 0.7094, 0.7961 }
+
+testColor.get(ColorSpace.LAB)
+// Returns LAB component array: { 50.0,	65.7785, -23.9414 }
+
+testColor.get(ColorSpace.LCH)
+// Returns LCH component array: { 50.0, 70.0, 340.0 }
 
 ```
 
-
-##### Chroma.getXXX ()
+##### Chroma.getXXX()
 
 ```processing
 
@@ -209,6 +221,13 @@ testColor.getLCH()
 
 ```
 
+##### Chroma.getAlpha()
+
+```processing
+testColor.getAlpha();
+// Returns Alpha Channel = 255 (Opaque)
+
+```
 
 ##### Chroma.getLuminance ()
 ```processing
@@ -219,6 +238,44 @@ testColor.getLuminance();
 // Returns 0.212600
 
 ```
+
+
+##### Chroma.get(ColorSpace)
+
+```processing
+
+testColor.get(ColorSpace.RGB)
+// Returns RGB component array: { 203.0, 59.0, 161.0 }
+
+testColor.get(ColorSpace.HSL)
+// Returns HSL component array: { 317.5, 0.5806, 0.5137 }
+
+testColor.get(ColorSpace.HSV)
+// Returns HSV component array: { 317.5, 0.7094, 0.7961 }
+
+testColor.get(ColorSpace.LAB)
+// Returns LAB component array: { 50.0,	65.7785, -23.9414 }
+
+testColor.get(ColorSpace.LCH)
+// Returns LCH component array: { 50.0, 70.0, 340.0 }
+
+```
+
+##### Chroma.set(ColorSpace, input1, input2, input3)
+
+```processing
+
+testColor.set(ColorSpace.RGB, 0, 255, 0); // Sets testColor to green
+
+```
+
+##### Chroma.set(ColorSpace, Channel, input)
+
+```processing
+
+testColor.set(ColorSpace.RGB, Channel.G, 255); // Sets testColor to green
+```
+
 
 
 ### Color Conversions
