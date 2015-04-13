@@ -138,15 +138,18 @@ public class Chroma {
     public boolean clipped() {
         return chroma.clipped();
     }
+
     public double getAlpha() {
         return chroma.getAlpha();
     }
     public void setAlpha(double alpha) {
         chroma.setAlpha(alpha);
     }
+
     public double getLuminance() {
         return chroma.getLuminance();
     }
+
 
     // GET-COMPONENT METHODS
     /////////////////////////////////////////////////////////////////////////////////////
