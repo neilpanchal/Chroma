@@ -1,5 +1,5 @@
 
-![Chroma](http://i.imgur.com/jp31ABn.png)
+![Chroma](http://i.imgur.com/8p9f3Gu.png)
 
 `*Documentation is work in progress.*`
 
