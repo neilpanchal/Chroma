@@ -20,13 +20,19 @@ public class ChromaLAB extends ChromaColor {
 
     // GET & SET METHODS
     /////////////////////////////////////////////////////////////////////////////////////
-    public double getLAB_L() { return this.lab_L;}
-    public double getLAB_A() { return this.lab_A;}
-    public double getLAB_B() { return this.lab_B;}
+    @Override
+	public double getLAB_L() { return this.lab_L;}
+    @Override
+	public double getLAB_A() { return this.lab_A;}
+    @Override
+	public double getLAB_B() { return this.lab_B;}
 
-    public void setLAB_L(double lab_L_) { this.lab_L = lab_L_;}
-    public void setLAB_A(double lab_A_) { this.lab_A = lab_A_;}
-    public void setLAB_B(double lab_B_) { this.lab_B = lab_B_;}
+    @Override
+	public void setLAB_L(double lab_L_) { this.lab_L = lab_L_;}
+    @Override
+	public void setLAB_A(double lab_A_) { this.lab_A = lab_A_;}
+    @Override
+	public void setLAB_B(double lab_B_) { this.lab_B = lab_B_;}
 
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////

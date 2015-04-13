@@ -21,13 +21,19 @@ public class ChromaHSV extends ChromaColor {
 
     // GET & SET METHODS
     /////////////////////////////////////////////////////////////////////////////////////
-    public double getHSV_H() { return this.hsv_H;}
-    public double getHSV_S() { return this.hsv_S;}
-    public double getHSV_V() { return this.hsv_V;}
+    @Override
+	public double getHSV_H() { return this.hsv_H;}
+    @Override
+	public double getHSV_S() { return this.hsv_S;}
+    @Override
+	public double getHSV_V() { return this.hsv_V;}
 
-    public void setHSV_H(double hsv_H_) { this.hsv_H = hsv_H_;}
-    public void setHSV_S(double hsv_S_) { this.hsv_S = hsv_S_;}
-    public void setHSV_V(double hsv_V_) { this.hsv_V = hsv_V_;}
+    @Override
+	public void setHSV_H(double hsv_H_) { this.hsv_H = hsv_H_;}
+    @Override
+	public void setHSV_S(double hsv_S_) { this.hsv_S = hsv_S_;}
+    @Override
+	public void setHSV_V(double hsv_V_) { this.hsv_V = hsv_V_;}
 
     // CONVERSION METHODS
     /////////////////////////////////////////////////////////////////////////////////////
