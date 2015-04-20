@@ -24,13 +24,13 @@ As a demonstration, the swatches shown above exemplify the drawbacks of HSL colo
 <br />
 ![Gray Scale Conversion](http://i.imgur.com/5sXovcz.png)
 <br />
-Percentual uniformity is apparent when the colors are desatured in OSX Preview app (which probably uses CIELab space to color conversion). The bottom band of swatches have the same gray scale value.
+Perceptual uniformity is apparent when the colors are desatured in OSX Preview app (which probably uses CIELab space to color conversion). The bottom band of swatches have the same gray scale value.
 
 It is important to understand that CIE-LCH color space is ~50% larger than sRGB and high chroma colors do not have a RGB representation as illustrated in the Hue vs. Chroma plot (Luminosity = 60) below. See API documentation under the `clipped()` section for further details on how to make sure the color conversions are accurate.
 
-</br></br>
+<br />
 ![Hue vs. Chroma Plot](http://i.imgur.com/VqbbGO2.png)
-<br></br>
+<br />
 
 ## Code Sample
 
