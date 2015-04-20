@@ -173,57 +173,14 @@ Chroma testColor = new Chroma("Red");
 
 ### Color Information
 
+#### Get Methods
 ##### Chroma.get ()
+`Chroma.get()` method can be used with a number of ways. By default, it returns an integer representation of the RGB components. The output integer has the following bit assignments:
+`AAAAAAAARRRRRRRRGGGGGGGGBBBBBBBB`, a total of 32 bits or 4 bytes, each representing (from most significant bit to the least) - Alpha, Red, Green and Blue channels.
 
 ```processing
-Chroma testColor = new Chroma("Red");
-// Create a Red(#FF0000) color with Alpha = 255
-
 testColor.get();
 // Returns a 4 byte (32-bit) integer or 0xFFFF0000 for Red (#FF0000)
-
-```
-
-##### Chroma.get(ColorSpace)
-
-```processing
-
-testColor.get(ColorSpace.RGB)
-// Returns RGB component array: { 203.0, 59.0, 161.0 }
-
-testColor.get(ColorSpace.HSL)
-// Returns HSL component array: { 317.5, 0.5806, 0.5137 }
-
-testColor.get(ColorSpace.HSV)
-// Returns HSV component array: { 317.5, 0.7094, 0.7961 }
-
-testColor.get(ColorSpace.LAB)
-// Returns LAB component array: { 50.0, 65.7785, -23.9414 }
-
-testColor.get(ColorSpace.LCH)
-// Returns LCH component array: { 50.0, 70.0, 340.0 }
-
-```
-
-##### Chroma.getXXX()
-
-```processing
-
-testColor.getRGB()
-// Returns RGB component array: { 203.0, 59.0, 161.0 }
-
-testColor.getHSL()
-// Returns HSL component array: { 317.5, 0.5806, 0.5137 }
-
-testColor.getHSV()
-// Returns HSV component array: { 317.5, 0.7094, 0.7961 }
-
-testColor.getLAB()
-// Returns LAB component array: { 50.0, 65.7785, -23.9414 }
-
-testColor.getLCH()
-// Returns LCH component array: { 50.0, 70.0, 340.0 }
-
 ```
 
 ##### Chroma.getAlpha()
@@ -231,7 +188,6 @@ testColor.getLCH()
 ```processing
 testColor.getAlpha();
 // Returns Alpha Channel = 255 (Opaque)
-
 ```
 
 ##### Chroma.getLuminance ()
@@ -241,14 +197,12 @@ Chroma testColor = new Chroma ("red");
 
 testColor.getLuminance();
 // Returns 0.212600
-
 ```
 
 
 ##### Chroma.get(ColorSpace)
 
 ```processing
-
 testColor.get(ColorSpace.RGB)
 // Returns RGB component array: { 203.0, 59.0, 161.0 }
 
@@ -263,21 +217,17 @@ testColor.get(ColorSpace.LAB)
 
 testColor.get(ColorSpace.LCH)
 // Returns LCH component array: { 50.0, 70.0, 340.0 }
-
 ```
 
 ##### Chroma.set(ColorSpace, input1, input2, input3)
 
 ```processing
-
 testColor.set(ColorSpace.RGB, 0, 255, 0); // Sets testColor to green
-
 ```
 
 ##### Chroma.set(ColorSpace, Channel, input)
 
 ```processing
-
 testColor.set(ColorSpace.RGB, Channel.G, 255); // Sets testColor to green
 ```
 
@@ -285,21 +235,33 @@ testColor.set(ColorSpace.RGB, Channel.G, 255); // Sets testColor to green
 
 ### Color Conversions
 
+##### RGB to LAB conversion
 ```processing
-
-// RGB to LAB conversion (can be used for any color spaces);
 Chroma testColorRGB = new Chroma(ColorSpace.RGB, 255, 0, 0, 255);
-testColorRGB.getLAB();
+// Create a red test color
+
+testColorRGB.get(ColorSpace.LAB);
 // Returns { 53.240794589926296,    80.09245948458054,  67.203196401666}
+```
 
-// LCH to RGB conversion
-Chroma testColorLCH = new Chroma(ColorSpace.LCH, 50, 70, 340, 255); // Creates a magenta color
-testColorLCH.getRGB();
+##### LCH to RGB conversion
+```processing
+Chroma testColorLCH = new Chroma(ColorSpace.LCH, 50, 70, 340, 255); 
+// Creates a magenta test color
+
+testColorLCH.get(ColorSpace.RGB);
 // Returns { 203.0,     59.0,   161.0 }
+```
 
 
+
+##### Clipped colors in RGB space
+Care must be taken when dealing with LAB/LCH colors. The sRGB color space is ~50% of the total colors represented in CIE domain. They may lie outside of the RGB color space and therefore the conversion is not possible and invalid. In the case when a color does not have a valid RGB color, its components are clamped between 0-255. Converting from CIE to RGB and back to CIE will not return the same initial CIE color due to the clipping.
+
+If the color is clipped, the `clipped()` method can be used to check the clipped status flag.
+
+```processing
 testColorLCH.clipped();
-// Be careful when creating LAB/LCH colors. They may lie outside of the RGB color space. You can check if the color is clipped by calling the clipped() method
 // If True: One of the R, G or B channels is clipped
 ```
 
