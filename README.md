@@ -63,7 +63,7 @@ void draw() {
 
 ## API Reference
 
-`*Work in progress*`
+`testColor` is `#FF0000` or Red unless otherwise specified.
 
 ### Color Spaces
 
@@ -166,8 +166,6 @@ Constructor with a standard CSS color name. For example, "Red". Input is not cas
 ```processing
 Chroma testColor = new Chroma("Red");
 // Create a Red(#FF0000) color with Alpha = 255
-
-
 ```
 
 
@@ -199,36 +197,49 @@ testColor.getLuminance();
 // Returns 0.212600
 ```
 
-
 ##### Chroma.get(ColorSpace)
-
+Supported ColorSpace arguments: RGB, HSL, HSV, LAB, LCH. Color conversion will happen automatically if it was created in a different color space.
 ```processing
-testColor.get(ColorSpace.RGB)
+testColor.get(ColorSpace.RGB);
 // Returns RGB component array: { 203.0, 59.0, 161.0 }
 
-testColor.get(ColorSpace.HSL)
+testColor.get(ColorSpace.HSL);
 // Returns HSL component array: { 317.5, 0.5806, 0.5137 }
 
-testColor.get(ColorSpace.HSV)
+testColor.get(ColorSpace.HSV);
 // Returns HSV component array: { 317.5, 0.7094, 0.7961 }
 
-testColor.get(ColorSpace.LAB)
+testColor.get(ColorSpace.LAB);
 // Returns LAB component array: { 50.0, 65.7785, -23.9414 }
 
-testColor.get(ColorSpace.LCH)
+testColor.get(ColorSpace.LCH);
 // Returns LCH component array: { 50.0, 70.0, 340.0 }
 ```
+
+##### Chroma.get(ColorSpace, Channel)
+Channel must be a valid component of the ColorSpace. Supported Channel arguments are dependent upon the ColorSpace in context.
+
+```processing
+testColor.get(ColorSpace.RGB, Channel.R);
+// Returns 255
+```
+
+`testColor.get(ColorSpace.RGB, Channel.L);` will result in an invalid argument exception as `Channel.L` is not a component of `ColorSpace.RGB`.
+
+#### Set methods
 
 ##### Chroma.set(ColorSpace, input1, input2, input3)
 
 ```processing
-testColor.set(ColorSpace.RGB, 0, 255, 0); // Sets testColor to green
+testColor.set(ColorSpace.RGB, 0, 255, 0); 
+// Sets testColor to green
 ```
 
 ##### Chroma.set(ColorSpace, Channel, input)
 
 ```processing
-testColor.set(ColorSpace.RGB, Channel.G, 255); // Sets testColor to green
+testColor.set(ColorSpace.RGB, Channel.G, 255); 
+// Sets testColor to green
 ```
 
 
