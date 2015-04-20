@@ -346,6 +346,7 @@ information: http://wiki.processing.org/w/How_to_Install_a_Contributed_Library
 
 ## License
 
+```
 The MIT License (MIT)
 
 Copyright (c) 2015 Neil Panchal, http://neil.engineer
@@ -367,3 +368,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
