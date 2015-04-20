@@ -47,8 +47,11 @@ void setup() {
     rectMode(CENTER);
     noStroke();
 
-    testColor = new Chroma(ColorSpace.LCH, l, c, h, 255); // Create a chroma object
-    println("Valid RGB Color: " + !testColor.clipped()); // Check if the RGB values are clipped
+    testColor = new Chroma(ColorSpace.LCH, l, c, h, 255); 
+    // Create a chroma object
+    
+    println("Valid RGB Color: " + !testColor.clipped()); 
+    // Check if the RGB values are clipped
 }
 
 void draw() {
@@ -56,8 +59,11 @@ void draw() {
     background(255);
 
 
-    fill(testColor.get()); // To fetch RGB color, use the getRGB method.
-    rect(width/2, height/2, 100, 100); // Draw a magenta square
+    fill(testColor.get()); 
+    // To fetch RGB color, use the getRGB method.
+    
+    rect(width/2, height/2, 100, 100); 
+    // Draw a magenta square
 }
 ```
 
