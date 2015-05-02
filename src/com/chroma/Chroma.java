@@ -149,8 +149,69 @@ public class Chroma {
     public double getLuminance() {
         return chroma.getLuminance();
     }
+    
+    public Chroma getMaxChroma() {
+    	
+    	double lum = chroma.getLCH_L();
+    	double chr = chroma.getLCH_C();
+    	double hue = chroma.getLCH_H();
+    	
+    	boolean truth = true;
+    	int maxIter = 100;
+    	int iter = 0;
+    	double threshold = 0.1;
+    	
+    	double min = chr;
+    	double max = 128;
+    	double mid = min + (max - min)/2.0;
+   
+    	Chroma test = new Chroma(ColorSpace.LCH, lum, chr, hue);
+    	double bottomHalf;
+    	double topHalf;
+    	
+    	
+    	while(truth) {
+    		
+    		bottomHalf = min + (mid-min)/2.0;
+    		topHalf = mid + (max-mid)/2.0;
+    		
+    		if (test.clipped()) {
+    			max = mid;
+    			mid = bottomHalf;
+    			    			
+    		} else {
+    			
+    			if (max-min < threshold) {
+    				return test;
+    			}
+    			min = mid;
+    			mid = topHalf;
+    			
+    		}
+    		
+    		test.set(ColorSpace.LCH, Channel.C, mid);
+    		System.out.println("Iter: " + iter + " , min: " + min + " , mid: " + mid + " , max: " + max + " , Clipped: " + test.clipped());
 
+    		iter++;
+    		
+    		if (iter==maxIter) {
+    			
+    			truth = false;
+    			return test;
+    		}
 
+    	}
+    	
+    	return new Chroma(ColorSpace.LCH, lum, chr, hue);
+    }
+    
+    private ChromaColor getMaxChromaColor() {
+    	
+    	
+    	return this.chroma;
+    }
+
+    	
     // GET-COMPONENT METHODS
     /////////////////////////////////////////////////////////////////////////////////////
     public int get() {
