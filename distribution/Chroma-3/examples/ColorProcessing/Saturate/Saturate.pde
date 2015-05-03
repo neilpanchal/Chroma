@@ -4,7 +4,7 @@ int l = 50; // Luminosity, Range: 0-100
 int c = 70; // Chroma, Range: 0-128
 int h = 340; // Hue, Range: 0-360
 
-Chroma hexColor;
+Chroma testColor;
 
 void setup() {
 
@@ -12,7 +12,7 @@ void setup() {
     rectMode(CENTER);
     noStroke();
 
-    hexColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
+    testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
     noLoop();
 
 }
@@ -20,10 +20,10 @@ void setup() {
 void draw() {
 
     background(255);
-    fill(hexColor.get());
+    fill(testColor.get());
     rect(width / 2, height / 2, 600, 600);
 
-    fill(hexColor.saturate().get());
+    fill(testColor.saturate().get());
     rect(width / 2, height / 2, 300, 300);
 }
 

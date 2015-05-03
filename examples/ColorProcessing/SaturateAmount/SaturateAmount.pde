@@ -2,8 +2,8 @@ import com.chroma.*;
 
 int l = 50; // Luminosity, Range: 0-100
 int c = 70; // Chroma, Range: 0-128
-int h = 340; // Hue, Range: 0-360
-
+int h = 340; // Hue, Range: 0-360'
+int squares = 4;
 Chroma testColor;
 
 void setup() {
@@ -20,11 +20,11 @@ void setup() {
 void draw() {
 
     background(255);
-    fill(testColor.get());
-    rect(width / 2, height / 2, 600, 600);
 
-    fill(testColor.saturate().get());
-    rect(width / 2, height / 2, 300, 300);
+    for (int i = 0; i < squares; i++) {
+      fill(testColor.saturate(map(i, 0, squares, 0, 100)).get());
+      rect(width / 2, height / 2, 600* (squares-i)/squares, 600* (squares-i)/squares);
+    }
 }
 
 void keyReleased() {
@@ -33,5 +33,3 @@ void keyReleased() {
         saveFrame("####.png");
     }
 }
-
-

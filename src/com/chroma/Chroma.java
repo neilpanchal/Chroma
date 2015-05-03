@@ -158,28 +158,52 @@ public class Chroma {
 	public double getLuminance() {
 		return chroma.getLuminance();
 	}
-
-	public Chroma saturate() {
-
+	
+	public Chroma tint(double amount) {
+		if (amount < 0 || amount > 100) {
+			System.out.println("Invalid Amount entered");
+			return new Chroma(0);
+		}
+		
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
+		
+		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
 
+		return new Chroma(ColorSpace.LCH, lum, maxChroma * amount/100.0, hue);
+
+	}
+	
+	public Chroma saturate() {
+		return saturate(100.0);
+	}
+	public Chroma saturate(double amount) {
+
+		if (amount < 0 || amount > 100) {
+			System.out.println("Invalid Amount entered");
+			return new Chroma(0);
+		}
+		
+		double lum = chroma.getLCH_L();
+		double chr = chroma.getLCH_C();
+		double hue = chroma.getLCH_H();
+		
+		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
+
+		return new Chroma(ColorSpace.LCH, lum, chr + (maxChroma-chr) * (amount/100.0), hue);
+	}
+
+	private double getMaxChroma(double lum, double chr, double hue, int maxIter, double threshold) {
+		
 		boolean truth = true;
-		int maxIter = 20;
 		int iter = 0;
-		double threshold = 0.1;
 
 		double min = chr;
 		double max = 128;
 		double mid = min + (max - min) / 2.0;
 
 		Chroma test = new Chroma(ColorSpace.LCH, lum, chr, hue);
-//		System.out.println("---------------------------------------------------------------------------");
-//		System.out.println("Original\t" + " C: " + chr +
-//											" Clipped: " + test.clipped());
-//		System.out.println("---------------------------------------------------------------------------");
-
 		double bottomHalf;
 		double topHalf;
 
@@ -187,7 +211,7 @@ public class Chroma {
 
 			bottomHalf = min + (mid - min) / 2.0;
 			topHalf = mid + (max - mid) / 2.0;
-			
+
 			test.set(ColorSpace.LCH, Channel.C, mid);
 
 			if (test.clipped()) {
@@ -195,31 +219,25 @@ public class Chroma {
 				mid = bottomHalf;
 
 			} else {
-				if (max - min < threshold) {
-//					System.out.println("Solution Converged @ " + test.getLCH(Channel.C) +
-//							" , Clipped: " + test.clipped());
-					return test;
+				if ((max - min) < threshold) {
+					return test.getLCH(Channel.C);
+
 				}
 				min = mid;
 				mid = topHalf;
 
 			}
 
-//			System.out.println("Iter: " + iter + " , min: " + min + " , mid: "
-//					+ mid + " , max: " + max + " , Clipped: " + test.clipped());
-
 			iter++;
 
 			if (iter == maxIter) {
-//				System.out.println("Solution Iteration Limit @ " + test.getLCH(Channel.C) +
-//						" , Clipped: " + test.clipped());
 				truth = false;
-				return test;
+				return test.getLCH(Channel.C);
 			}
 
 		}
+		return test.getLCH(Channel.C);
 
-		return new Chroma(ColorSpace.LCH, lum, chr, hue);
 	}
 
 
