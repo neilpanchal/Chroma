@@ -159,7 +159,7 @@ public class Chroma {
 		return chroma.getLuminance();
 	}
 
-	public Chroma getMaxChroma() {
+	public Chroma saturate() {
 
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
