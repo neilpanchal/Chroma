@@ -277,10 +277,6 @@ These methods manipulate the chromacity of the tint without changing luminosity 
 ##### saturate()
 The `saturate()` method uses a binary search algorithm to find a valid RGB color with maximum chromacity in CIE-LCH color space. As previously noted, the luminosity and hue remains unchanged.
 
-<br />
-![Saturate](http://i.imgur.com/aV8mj8a.png)
-<br />
-
 ```processing
 testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
 // Create a magenta tint
@@ -291,6 +287,12 @@ rect(width / 2, height / 2, 600, 600);
 fill(testColor.saturate().get()); // Fully saturated tint
 rect(width / 2, height / 2, 300, 300);
 ```
+
+<br />
+![Saturate](http://i.imgur.com/aV8mj8a.png)
+<br />
+
+
 
 To better illustrate the `saturate()` method, below is a plot of Hue vs. Chromacity at a constant Luminosity (L = 71). Original tint is indicated by a square marker and their corresponding saturated color is shown as circular markers. 
 
