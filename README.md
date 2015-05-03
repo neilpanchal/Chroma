@@ -316,6 +316,15 @@ for (int i = 0; i < squares; i++) {
 ##### tint(amount)
 Similar to the `saturate(amount)` method, `tint()` returns a Chroma color with a chomacity proportioanl to the absolute range (0-maximum). 
 
+```processing
+testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
+
+for (int i = 0; i < squares; i++) {
+    fill(testColor.tint(map(i, 0, squares, 0, 100)).get());
+    rect(width / 2, height / 2, 600* (squares-i)/squares, 600* (squares-i)/squares);
+}
+```
+
 <br />
 ![Tint Amount](http://i.imgur.com/Fz9nk8T.png)
 <br />
