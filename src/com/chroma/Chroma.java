@@ -158,8 +158,17 @@ public class Chroma {
 	public double getLuminance() {
 		return chroma.getLuminance();
 	}
+
 	
-	public Chroma tint(double amount) {
+	public Chroma saturate() {
+		return saturate(100.0);
+	}
+	public Chroma lighten() {
+		return lighten(100.0);
+	}
+	
+	// Tone changes the saturation or chromacity of the color (0-100% Absolute)
+	public Chroma tone(double amount) {
 		if (amount < 0 || amount > 100) {
 			System.out.println("Invalid Amount entered");
 			return new Chroma(0);
@@ -175,9 +184,21 @@ public class Chroma {
 
 	}
 	
-	public Chroma saturate() {
-		return saturate(100.0);
+	// Tint changes the lightness of the color (0-100% Absolute)
+	public Chroma tint(double amount) {
+		if (amount < 0 || amount > 100) {
+			System.out.println("Invalid Amount entered");
+			return new Chroma(0);
+		}
+		
+		double lum = chroma.getLCH_L();
+		double chr = chroma.getLCH_C();
+		double hue = chroma.getLCH_H();
+		double maxLuma = getMaxLuma(lum, chr, hue, 20, 0.1);
+
+		return new Chroma(ColorSpace.LCH, maxLuma * (amount/100.0), chr, hue);
 	}
+	
 	public Chroma saturate(double amount) {
 
 		if (amount < 0 || amount > 100) {
@@ -192,6 +213,68 @@ public class Chroma {
 		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
 
 		return new Chroma(ColorSpace.LCH, lum, chr + (maxChroma-chr) * (amount/100.0), hue);
+	}
+
+	public Chroma lighten(double amount) {
+
+		if (amount < 0 || amount > 100) {
+			System.out.println("Invalid Amount entered");
+			return new Chroma(0);
+		}
+		
+		double lum = chroma.getLCH_L();
+		double chr = chroma.getLCH_C();
+		double hue = chroma.getLCH_H();
+		
+		double maxLuma = getMaxLuma(lum, chr, hue, 20, 0.1);
+
+		return new Chroma(ColorSpace.LCH, lum + (maxLuma-lum) * (amount/100.0), chr, hue);
+	}
+		
+	private double getMaxLuma(double lum, double chr, double hue, int maxIter, double threshold) {
+		
+		boolean truth = true;
+		int iter = 0;
+
+		double min = lum;
+		double max = 100;
+		double mid = min + (max - min) / 2.0;
+
+		Chroma test = new Chroma(ColorSpace.LCH, lum, chr, hue);
+		double bottomHalf;
+		double topHalf;
+
+		while (truth) {
+
+			bottomHalf = min + (mid - min) / 2.0;
+			topHalf = mid + (max - mid) / 2.0;
+
+			test.set(ColorSpace.LCH, Channel.L, mid);
+
+			if (test.clipped()) {
+				max = mid;
+				mid = bottomHalf;
+
+			} else {
+				if ((max - min) < threshold) {
+					return test.getLCH(Channel.L);
+
+				}
+				min = mid;
+				mid = topHalf;
+
+			}
+
+			iter++;
+
+			if (iter == maxIter) {
+				truth = false;
+				return test.getLCH(Channel.L);
+			}
+
+		}
+		return test.getLCH(Channel.L);
+
 	}
 
 	private double getMaxChroma(double lum, double chr, double hue, int maxIter, double threshold) {
