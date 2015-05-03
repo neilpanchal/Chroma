@@ -271,7 +271,7 @@ testColorLCH.clipped();
 
 ### Color Processing
 
-#### Saturate
+#### Chromatic Processing
 These methods manipulate the chromacity of the tint without changing luminosity or hue. 
 
 ##### saturate()
@@ -298,8 +298,27 @@ To better illustrate the `saturate()` method, below is a plot of Hue vs. Chromac
 ![Maximize Chroma](http://i.imgur.com/uVx3sik.png)
 <br />
 
+##### saturate(amount)
+By default, `saturate()` will return a fully saturated valid RGB color. Amount of saturation from the original tint can be supplied as an argument from 0 - 100 %. 
 
+```processing
+testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
 
+for (int i = 0; i < squares; i++) {
+    fill(testColor.saturate(map(i, 0, squares, 0, 100)).get());
+    rect(width / 2, height / 2, 600* (squares-i)/squares, 600* (squares-i)/squares);
+}
+```
+<br />
+![Saturate Amount](http://i.imgur.com/NrLyWnt.png)
+<br />
+
+##### tint(amount)
+Similar to the `saturate(amount)` method, `tint()` returns a Chroma color with a chomacity proportioanl to the absolute range (0-maximum). 
+
+<br />
+![Tint Amount](http://i.imgur.com/Fz9nk8T.png)
+<br />
 
 ## Tests
 
