@@ -5,5 +5,5 @@ package com.chroma;
 
 public enum Channel {
 
-    R, G, B, H, S, L, V, A, C;
+	R, G, B, H, S, L, V, A, C;
 }
