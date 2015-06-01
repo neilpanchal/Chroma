@@ -315,6 +315,16 @@ for (int i = 0; i < squares; i++) {
 ![Saturate Amount](http://i.imgur.com/NrLyWnt.png)
 <br />
 
+##### saturateTo(amount)
+`saturateTo(amount)` can be used to push Chroma color to a specific level of intensity. The function will make sure that the Chroma color is not clipped in the CIE color space. If the requested chroma amount is larger than the maximum chroma (as returned by the `getMaxChroma()` function), the returned intensity is clipped at the max chroma of the color. This function is useful when matching different colors to an absolute (0-128) chroma values. 
+
+```processing
+testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
+testColor.saturateTo(40);
+// Returns a testColor with {50, 50, 0} LCH values.
+}
+```
+
 ##### tint(amount)
 Similar to the `saturate(amount)` method, `tint()` returns a Chroma color with a chomacity proportional to the absolute range (0-maximum). 
 
