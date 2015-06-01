@@ -316,7 +316,7 @@ for (int i = 0; i < squares; i++) {
 <br />
 
 ##### tint(amount)
-Similar to the `saturate(amount)` method, `tint()` returns a Chroma color with a chomacity proportioanl to the absolute range (0-maximum). 
+Similar to the `saturate(amount)` method, `tint()` returns a Chroma color with a chomacity proportional to the absolute range (0-maximum). 
 
 ```processing
 testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
