@@ -235,7 +235,6 @@ public class Chroma {
 		return new Chroma(ColorSpace.LCH, lum, toChr, hue);
 	}
 	
-	
 	public Chroma lighten(double amount) {
 
 		Args.checkForRange(amount, 0, 100, "Invalid lighten() amount. Please enter a number between 0-100.");
