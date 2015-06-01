@@ -211,6 +211,31 @@ public class Chroma {
 				* (amount / 100.0), hue);
 	}
 
+	public Chroma saturateTo(double amount) {
+
+		Args.checkForRange(amount, 0, 128, "Invalid saturateTo() amount. Please enter a number between 0-128.");
+
+		double lum = chroma.getLCH_L();
+		double chr = chroma.getLCH_C();
+		double hue = chroma.getLCH_H();
+
+		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
+		double toChr;
+		
+		// Check if the amount clips the color space
+		
+		if ((maxChroma - (chr + amount)) > 0) {
+			// OK to add more Chroma
+			toChr = amount;
+		} else {
+			// Clip at max Chroma
+			toChr = maxChroma;
+		}
+		
+		return new Chroma(ColorSpace.LCH, lum, toChr, hue);
+	}
+	
+	
 	public Chroma lighten(double amount) {
 
 		Args.checkForRange(amount, 0, 100, "Invalid lighten() amount. Please enter a number between 0-100.");
