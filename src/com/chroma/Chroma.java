@@ -159,80 +159,75 @@ public class Chroma {
 		return chroma.getLuminance();
 	}
 
-	
 	public Chroma saturate() {
 		return saturate(100.0);
 	}
+
 	public Chroma lighten() {
 		return lighten(100.0);
 	}
-	
+
 	// Tone changes the saturation or chromacity of the color (0-100% Absolute)
 	public Chroma tone(double amount) {
 		if (amount < 0 || amount > 100) {
 			System.out.println("Invalid Amount entered");
 			return new Chroma(0);
 		}
-		
+
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
-		
+
 		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
 
-		return new Chroma(ColorSpace.LCH, lum, maxChroma * amount/100.0, hue);
+		return new Chroma(ColorSpace.LCH, lum, maxChroma * amount / 100.0, hue);
 
 	}
-	
+
 	// Tint changes the lightness of the color (0-100% Absolute)
 	public Chroma tint(double amount) {
-		if (amount < 0 || amount > 100) {
-			System.out.println("Invalid Amount entered");
-			return new Chroma(0);
-		}
 		
+		Args.checkForRange(amount, 0, 100, "Invalid tint() amount. Please enter a number between 0-100.");
+
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
 		double maxLuma = getMaxLuma(lum, chr, hue, 20, 0.1);
 
-		return new Chroma(ColorSpace.LCH, maxLuma * (amount/100.0), chr, hue);
+		return new Chroma(ColorSpace.LCH, maxLuma * (amount / 100.0), chr, hue);
 	}
-	
+
 	public Chroma saturate(double amount) {
 
-		if (amount < 0 || amount > 100) {
-			System.out.println("Invalid Amount entered");
-			return new Chroma(0);
-		}
-		
+		Args.checkForRange(amount, 0, 100, "Invalid saturate() amount. Please enter a number between 0-100.");
+
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
-		
+
 		double maxChroma = getMaxChroma(lum, chr, hue, 20, 0.1);
 
-		return new Chroma(ColorSpace.LCH, lum, chr + (maxChroma-chr) * (amount/100.0), hue);
+		return new Chroma(ColorSpace.LCH, lum, chr + (maxChroma - chr)
+				* (amount / 100.0), hue);
 	}
 
 	public Chroma lighten(double amount) {
 
-		if (amount < 0 || amount > 100) {
-			System.out.println("Invalid Amount entered");
-			return new Chroma(0);
-		}
-		
+		Args.checkForRange(amount, 0, 100, "Invalid lighten() amount. Please enter a number between 0-100.");
+
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
-		
+
 		double maxLuma = getMaxLuma(lum, chr, hue, 20, 0.1);
 
-		return new Chroma(ColorSpace.LCH, lum + (maxLuma-lum) * (amount/100.0), chr, hue);
+		return new Chroma(ColorSpace.LCH, lum + (maxLuma - lum)
+				* (amount / 100.0), chr, hue);
 	}
-		
-	private double getMaxLuma(double lum, double chr, double hue, int maxIter, double threshold) {
-		
+
+	private double getMaxLuma(double lum, double chr, double hue, int maxIter,
+			double threshold) {
+
 		boolean truth = true;
 		int iter = 0;
 
@@ -277,8 +272,9 @@ public class Chroma {
 
 	}
 
-	private double getMaxChroma(double lum, double chr, double hue, int maxIter, double threshold) {
-		
+	private double getMaxChroma(double lum, double chr, double hue,
+			int maxIter, double threshold) {
+
 		boolean truth = true;
 		int iter = 0;
 
@@ -322,7 +318,6 @@ public class Chroma {
 		return test.getLCH(Channel.C);
 
 	}
-
 
 	// GET-COMPONENT METHODS
 	// ///////////////////////////////////////////////////////////////////////////////////
