@@ -321,7 +321,17 @@ for (int i = 0; i < squares; i++) {
 ```processing
 testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
 testColor.saturateTo(40);
-// Returns a testColor with {50, 50, 0} LCH values.
+// Returns a testColor with {50, 40, 0} LCH values.
+}
+```
+
+##### saturateBy(amount)
+`saturateBy(amount)` can be used to push Chroma color by a specific level of intensity. The function will make sure that the Chroma color is not clipped in the CIE color space. If the requested chroma amount is larger than the maximum chroma (as returned by the `getMaxChroma()` function), the returned intensity is clipped at the max chroma of the color. This function is useful when adding a fixed amount of intensity to a color.
+
+```processing
+testColor = new Chroma(ColorSpace.LCH, 50, 20, 0);
+testColor.saturateBy(40);
+// Returns a testColor with {50, 60, 0} LCH values.
 }
 ```
 
