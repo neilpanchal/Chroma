@@ -10,7 +10,7 @@ public class ChromaLCH extends ChromaColor {
 
 		this.lch_L = lch_L_;
 		this.lch_C = lch_C_;
-		this.lch_H = lch_H_;
+		this.lch_H = cycleHue(lch_H_);
 		this.alpha = alpha_;
 	}
 
@@ -79,6 +79,17 @@ public class ChromaLCH extends ChromaColor {
 	@Override
 	public ChromaLCH getChromaLCH() {
 		return this;
+	}
+	
+	public double cycleHue(double hue_) {
+		
+		if (hue_ >= 0 && hue_ <= 360) {
+			return hue_;
+		} else if (hue_>= 0) {
+			return hue_ % 360;
+		} else {
+			return cycleHue(360-(-hue_));
+		}
 	}
 
 }
