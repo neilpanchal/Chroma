@@ -80,15 +80,15 @@ public class ChromaLCH extends ChromaColor {
 	public ChromaLCH getChromaLCH() {
 		return this;
 	}
-	
+
 	public double cycleHue(double hue_) {
-		
+
 		if (hue_ >= 0 && hue_ <= 360) {
 			return hue_;
-		} else if (hue_>= 0) {
+		} else if (hue_ >= 0) {
 			return hue_ % 360;
 		} else {
-			return cycleHue(360-(-hue_));
+			return cycleHue(360 - (-hue_));
 		}
 	}
 

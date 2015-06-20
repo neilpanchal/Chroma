@@ -2,7 +2,8 @@ package com.chroma;
 
 public final class Args {
 
-	public static void checkForRange(double input_, double low_, double high_, String errorString) {
+	public static void checkForRange(double input_, double low_, double high_,
+			String errorString) {
 		if (!isInRange(input_, low_, high_)) {
 			throw new IllegalArgumentException(errorString);
 		}
