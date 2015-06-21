@@ -172,11 +172,9 @@ public class Chroma {
 
 	// Tone changes the saturation or chromacity of the color (0-100% Absolute)
 	public Chroma tone(double amount) {
-		if (amount < 0 || amount > 100) {
-			System.out.println("Invalid Amount entered");
-			return new Chroma(0);
-		}
-
+		Args.checkForRange(amount, 0, 100,
+				"Invalid tone() amount. Please enter a number between 0-100.");
+		
 		double lum = chroma.getLCH_L();
 		double chr = chroma.getLCH_C();
 		double hue = chroma.getLCH_H();
