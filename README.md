@@ -15,7 +15,7 @@ Artists & designers benefit tremendously from being able to control luminosity i
 
 Human vision has evolved to prioritize luminosity information during the object recognition process. Color spaces such as **HSL**, **HSV/HSB** and **RGB** are optimized for digital displays and lack luminosity control. For an example, varying Hue while keeping Saturation and Lightness constant in HSL colorspace produces perceptually non-uniform colors. Moreover, Lightness is a non-linear function of both - Saturation and Hue. This severely limits the ability to predict the apparent and perceptual luminosity.
 
-Chroma library allows for color production in **CIE-Lab** and **CIE-LCH** (cyclindrical transfomration of CIE-Lab) which are better suited for human vision and perceptual predictibility. Chroma objects can be instantiated with CIE color parameters, but represented and drawn in RGB color space.
+Chroma library allows for color production in **CIE-Lab** and **CIE-LCH** (cyclindrical transfomration of CIE-Lab) which are better suited for human vision. Chroma objects can be instantiated with CIE color parameters, but represented and drawn in RGB color space.
 
 <br />
 ![Hue Swatches](http://i.imgur.com/Jj8oScc.png)
