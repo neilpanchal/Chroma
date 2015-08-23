@@ -279,6 +279,21 @@ public class Chroma {
 				* (amount / 100.0), chr, hue);
 	}
 
+	public Chroma darken(double amount) {
+
+		Args.checkForRange(amount, 0, 100,
+				"Invalid lighten() amount. Please enter a number between 0-100.");
+
+		double lum = chroma.getLCH_L();
+		double chr = chroma.getLCH_C();
+		double hue = chroma.getLCH_H();
+
+		double maxLuma = getMaxLuma(lum, chr, hue, 20, 0.1);
+
+		return new Chroma(ColorSpace.LCH, Math.abs(lum - amount), chr, hue);
+	}
+
+	
 	private double getMaxLuma(double lum, double chr, double hue, int maxIter,
 			double threshold) {
 
