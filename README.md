@@ -296,9 +296,9 @@ rect(width / 2, height / 2, 300, 300);
 
 To better illustrate the `saturate()` method, below is a plot of Hue vs. Chromacity at a constant Luminosity (L = 71). Original tint is indicated by a square marker and their corresponding saturated color is shown as circular markers. 
 
-<br />
+
 ![Maximize Chroma](/web/img/maximize_chroma.png?raw=true)
-<br />
+
 
 ##### saturate(amount)
 By default, `saturate()` will return a fully saturated valid RGB color. Amount of saturation from the original tint can be supplied as an argument from 0 - 100 %. 
